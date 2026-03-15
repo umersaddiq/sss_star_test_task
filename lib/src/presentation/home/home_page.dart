@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../../mixins/localization_mixin.dart';
+import 'widgets/explore_view.dart';
+import 'widgets/for_you_view.dart';
+import 'widgets/home_tab_bar.dart';
 
-class HomePage extends ConsumerWidget {
+class HomePage extends ConsumerStatefulWidget {
   const HomePage.builder(
     BuildContext context,
     GoRouterState state, {
@@ -13,11 +17,47 @@ class HomePage extends ConsumerWidget {
   static const name = '/';
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends ConsumerState<HomePage>
+    with LocalizationMixin, SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-        itemCount: 50,
-        itemBuilder: (context, index) => ListTile(title: Text('Item $index')),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        toolbarHeight: 80,
+        title: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: HomeTabBar(
+            tabController: _tabController,
+            tabs: [lang.forYou, lang.explore],
+          ),
+        ),
+      ),
+      body: TabBarView(
+        controller: _tabController,
+        children: const [
+          ForYouView(),
+          ExploreView(),
+        ],
       ),
     );
   }
