@@ -11,6 +11,7 @@ import '../../../gen/assets.gen.dart';
 import '../../../mixins/form_state_mixin.dart';
 import '../../../mixins/localization_mixin.dart';
 import '../../../widget/typography/sf_pro_text_widget.dart';
+import '../../home/home_page.dart';
 import '../sign_in_page.dart';
 import '../widgets/auth_text_field_widget.dart';
 
@@ -217,6 +218,7 @@ class _SignUpWithEmailViewState extends ConsumerState<SignUpWithEmailView>
             ),
           );
       if (!mounted) return;
+      context.goNamed(HomePage.name);
     } catch (e) {
       ErrorDialog(error: e.toString()).show(context);
     }

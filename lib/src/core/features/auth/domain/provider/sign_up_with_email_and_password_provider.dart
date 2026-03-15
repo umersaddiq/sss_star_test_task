@@ -1,6 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../local_data/drift/data_source/user_data_source.dart';
+import '../../../../local_data/preferences/preferences_service.dart';
 import '../models/sign_up_model.dart';
 import '../services/auth_service.dart';
 
@@ -22,6 +23,7 @@ class SignUpWithEmailAndPassword extends _$SignUpWithEmailAndPassword {
           .read(authServiceProvider)
           .registerWithEmailAndPassword(model: model);
       await ref.read(studentDbSourceProvider).upsertUser(model.toDto());
+      await ref.read(preferencesServiceProvider).saveSignIn(true);
       return user;
     });
     return state.value ?? '';
