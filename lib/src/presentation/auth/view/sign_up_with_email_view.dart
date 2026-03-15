@@ -66,10 +66,6 @@ class _SignUpWithEmailViewState extends ConsumerState<SignUpWithEmailView>
     _userNameController.addListener(_onFieldChanged);
     _birthdayController.addListener(_onFieldChanged);
     _passwordController.addListener(_onFieldChanged);
-    _emailController.text = 'umersaddiq49@gmail.com';
-    _passwordController.text = 'Umer@1234';
-    _userNameController.text = 'Umer Sadiq';
-    _birthdayController.text = '14/08/2020';
   }
 
   @override
