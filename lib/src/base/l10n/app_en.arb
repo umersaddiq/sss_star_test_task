@@ -35,5 +35,11 @@
   "passwordValidation": "Password must include a number, a letter, and a special character.",
   "@passwordValidation": {},
   "alreadyHaveAnAccount": "Already have an account? ",
-  "@alreadyHaveAnAccount": {}
+  "@alreadyHaveAnAccount": {},
+  "shop": "Shop",
+  "@shop": {},
+  "cart": "Cart",
+  "@cart": {},
+  "profile": "Profile",
+  "@profile": {}
 }

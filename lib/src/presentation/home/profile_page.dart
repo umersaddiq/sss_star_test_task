@@ -2,23 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class HomePage extends ConsumerWidget {
-  const HomePage.builder(
+class ProfilePage extends ConsumerWidget {
+  const ProfilePage.builder(
     BuildContext context,
     GoRouterState state, {
     super.key,
   });
 
-  static const path = '/';
-  static const name = '/';
+  static const path = '/profile';
+  static const name = '/profile';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      body: ListView.builder(
-        itemCount: 50,
-        itemBuilder: (context, index) => ListTile(title: Text('Item $index')),
-      ),
-    );
+    return const Center(child: Text('Profile Page'));
   }
 }
